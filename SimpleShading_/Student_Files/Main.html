@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Alexis Martineau -- Simple Shading</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+.title{
+	text-align: center;
+	font-size: 40px;
+	background-color: #ffffff;
+	padding-bottom: 300px;
+}
+
+.body {
+  background-color: #f1f1f1;
+  text-align: center;
+  font-size: 20px;
+  margin: 0px;
+}
+
+
+
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+</style>
+  </head>
+
+  <body onload="main()">
+	<div class= "title">
+		<h1>Project C</h1>
+		<h2>Robit and the magic donut!</h2>
+		<h3>Alexis Martineau</h3>
+	<div class = "body">
+		<p> Press w/a/s/d to move around the scene and r/f/q/e to pan the camera. </p>
+		<p> Press G to toggle your headlight </p>
+		<canvas id="webgl" width= height= align="right"> 
+		Please use a browser that supports HTML-5 "canvas"
+		</canvas>
+		<table align="center">
+			<tr>
+				<th>Shading: </th>
+				<th id = "Shading" > Gouraud </th>
+				<th> <button type= "button" onClick='ToggleShading()'> Switch </button> </th>
+			</th>
+			<tr>
+				<th>Lighting: </th>
+				<th id = "Lighting" > Phong </th>
+				<th> <button type= "button" onClick='ToggleLighting()'> Switch </button> </th>
+			</th>
+		</table>
+		<h4> Adjust the secondary light source:
+			 <button type= "button" onClick='LightSwitch(1)'> On/Off </button> </h4>
+			<table align="center">
+				<tr>
+					<th> Position </th> 
+					<th> X: <input id='userX' size=10> </th>
+					<th> Y:  <input id='userY' size=10> </th>
+					<th> Z:  <input id='userZ' size=10>  </th>
+					<th> <button type= "button" onClick='LightPosSubmit()'> Submit </button> </th>
+				</tr>
+				<tr>
+					<th>Ambient Color</th>
+					<th> R: <input id='userAmbiR' size=10> </th>
+					<th> G:  <input id='userAmbiG' size=10> </th> 
+					<th> B:  <input id='userAmbiB' size=10> </th>
+					<th> <button type= "button" onClick='LightAmbiSubmit()'> Submit </button> </th>
+				</tr>
+				<tr>
+					<th>Diffuse Color </th>
+					<th> R: <input id='userDiffR' size=10> </th>
+					<th> G:  <input id='userDiffG' size=10> </th>
+					<th> B:  <input id='userDiffB' size=10> </th>
+					<th> <button type= "button" onClick='LightDiffSubmit()'> Submit </button> </th>
+				</tr>
+				<tr>
+					<th>Specular Color</th>
+					<th> R: <input id='userSpecR' size=10> </th>
+					<th> G:  <input id='userSpecG' size=10> </th>
+					<th> B:  <input id='userSpecB' size=10> </th> 
+					<th> <button type= "button" onClick='LightSpecSubmit()'> Submit </button> </th>
+				</tr>
+			</table>
+			
+		<p> Press M to change the material of the mysterious donut! </p>
+		<p> Click and drag to rotate the donut</p>
+		<p>
+			Animations for Robit: 
+			<button type="button" onClick='QueueAnimation("Wave")'> Wave </button>
+			<button type="button" onClick='QueueAnimation("ThumbsUp")'> ThumbsUp </button>
+			<button type="button" onClick='QueueAnimation("FingerGun")'> FingerGun </button>
+			<button type="button" onClick='pause()'> PAUSE </button>
+			<button type="button" onClick='StopAnimations()'> END </button>
+		</p>
+		<p>
+			Press (space) to pause all the animations.
+		</p>
+		<p>
+			Press t to see only the transforms!
+		</p>	
+		
+		<br>
+		<a href="../../index.html">Return</a> <br>
+		
+	
+<! Load webGL-supplied libraries  >
+    <script src="../lib/webgl-utils.js"></script>  
+    <script src="../lib/webgl-debug.js"></script>
+<! Load our textbook-supplied libraries>
+    <script src="../lib/cuon-utils.js"></script>
+    <script src="../lib/cuon-matrix.js"></script>
+
+<! load a refined, high-performance vector/matrix library >
+    <script src="../lib/glmatrix.js"></script>
+
+<! Load OUR 3D graphics drawing program: from work by Vincent Bommier, 2018>
+		<script src="Lib/Materials.js"></script>
+		<script src="Lib/Lights.js"></script>
+		<script src="Lib/Shaders.js"></script>
+		<script src="Lib/lib2a.js"></script>
+		
+		<script src="Primitives/Tetrahedron.js"></script>
+		<script src="Primitives/Parallelepiped.js"></script>
+		<script src="Primitives/Pentagon.js"></script>
+		<script src="Primitives/Cylinder.js"></script>
+		<script src="Primitives/Debug.js"></script>
+		<script src="Primitives/Donut.js"></script>
+		<script src="Primitives/Sphere.js"></script>
+		<script src="Control/Animations.js"></script>
+		<script src="Control/Control.js"></script>		
+		<script src="BodyParts/Arm.js"></script>		
+		<script src="BodyParts/Body.js"></script>		
+		<script src="BodyParts/Head.js"></script>		
+		<script src="BodyParts/Treads.js"></script>		
+		<script src="Grid.js"></script>
+		<script src="Tree.js"></script>
+		<script src="Robot.js"></script>
+		
+    <script src="Main.js"></script>
+
+<! 
+=========================================================================
+In-class activity
+============================================================================
+1)  Look in the 'lib' directory.  There you'll find the library file 
+'cuon-matrix-quat03.js', an extended version of the book's rudimentary 
+vector/matrix library ('cuon-matrix.js'). 
+Add a line of text here to use that library in this simple program:
+>
+    <script src="../lib/cuon-matrix-quat03.js"></script>
+
+<! 
+2) Explore this 'cuon-matrix-quat03.js' library.  
+In it you'll find objects 'Vector3', 'Vector4' and 'Matrix4',
+which each have member functions to help you manipulate 
+3x1 vectors, 4x1 vectors and 4x4 matrices useful for computer graphics work,
+as well as a 'quaternion' object we will use later for animating rotations.
+
+3) Search this file for the string 'console', and you'll find the 'Matrix4'
+object and several others has a 'printMe()' member function.  Try it!  
+
+?HOW SHOULD I 'TRY IT'? 
+at the bottom of main(), create a new 'Matrix4' object, and use one of its 
+'setXXX()' member functions to initialize the matrix to some desirable set of
+values.  
+Can you create and print an identity matrix?  
+A 'translate' matrix?
+A 'scale' matrix?
+A 'rotation' matrix?
+
+4) Next, see if you can create and print a Vector3 object and a Vector4 object,
+and again use the 'printMe()' method to confirm their contents.
+
+5) Next, try out some basic vector/vector operations.
+--Create two different Vector4 objects with nonzero elements.  Compute and print
+their lengths in the console window. Can any Vector4 member function compute 
+that for you?  Should you add a new member fcn?  Can you normalize these vectors?
+
+--Can you compute a 'dotProduct()' for two Vector4 objects?  
+Why do we get a warning if either vector has a non-zero 'w' component?
+
+--Can you compute a 'crossProduct()' for two Vector4 objects? 
+Why do we get a warning if either vector has a non-zero 'w' component?
+
+--In the Matrix4 object, what's the difference between 'rotate()' and 'setRotate()' members?
+--What other vector/matrix operations should you test?
+
+
+>
+
+  </body>
+</html>
