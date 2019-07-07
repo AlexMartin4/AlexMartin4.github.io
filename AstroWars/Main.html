@@ -67,7 +67,9 @@ body {
 	<div class = "body">
 	
 	<h2>About</h2>
-	
+	This game is a 2-player space strategy game. While the structure of the game play is turned based,
+	all the action happens in real time. Maneuver your ships cleverly and make good use of your weapons
+	to wipe out the opposing team!
 	<br>
 	
 	<h2>Instructions</h2>
@@ -77,10 +79,55 @@ body {
 		<a href="AstroWars.zip">Download</a> <br>	
 	</div>
 	
-	<br><br>
+	<br>
 	
 	<h2>Game Manual</h2>
-
+	<h3>Basics</h3><br>
+	
+	Each turn, you will take turns planning the 
+	movement and actions of their space ships (ideally while your opponent looks away). Once you are
+	satisfied, you may hit the "End Turn" button to let your opponent play. After the second player is 
+	done, hitting the end turn button will trigger the realtime phase. During that time, neither player 
+	can act until the next planning phase. The game ends when both ships on either team have been destroyed.
+	<br><br>
+	
+	<h3>Movement</h3><br>
+	<br>
+	
+	<h3>Resources</h3><br>
+	
+	Each ship has limited Hull and Fuel. Getting hit will depleate Hull, if Hull reaches 0, the ship is
+	destroyed. Using the thrust engine will depleate Fuel, if Fuel reaches 0, ships still move but are unable to
+	thrust foward, making them mostly inert.
+	<br><br>
+	
+	<h3>Weapons</h3>
+	<table>
+  <tr>
+    <td><img class= "table-image" src="../ImageResources/Direct.png"></td>
+    <td><b>Direct Missile: </b> Fires a missile in the chosen direction. This is hard to hit but
+				the damage and effect area make up for it.</td>
+    <td><img class= "table-image" src="../ImageResources/Guided.png"></td>
+	<td><b>Guided Missile: </b> Fires a guided missile that will track any target (including friendlies!)
+				in front of it. While is is weaker than the direct missile, it is easier to hit with. </td>
+  </tr>
+  <tr>
+    <td><img class= "table-image" src="../ImageResources/Precision.png"></td>
+    <td><b>Precision Laser: </b> Fires a laser in a staight line. High damage but a long cooldown.</td>
+    <td><img class= "table-image" src="../ImageResources/Scatter.png"></td>
+	<td><b>Scatter Laser: </b> Fires an array of 5 lasers in a given direction. This is great to shoot
+			down incoming missiles.</td>
+  </tr>
+  <tr>
+    <td><img class= "table-image" src="../ImageResources/MineAW.png"></td>
+    <td><b>Mines: </b>	Creates three mines behind the ship. Mines detonate when any
+						ship comes into contact with them dealing significant damage.</td>
+    <td><img class= "table-image" src="../ImageResources/Poison.png"></td>
+	<td><b>Nuclear Missile: </b>Fires a missile in the given direction. The missile explodes on		
+								its own and releases a radioactive cloud which damages ships inside it.</td>
+  </tr>
+  
+</table>
 	
 	<h2>Credits</h2>
 	This game was built using Unity 2018 as a PIE Northwestern Development Club project.
